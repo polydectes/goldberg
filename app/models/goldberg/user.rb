@@ -2,6 +2,7 @@ require 'digest/sha1'
 
 module Goldberg
   class User < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
 
     belongs_to :role, :class_name => 'Goldberg::Role'

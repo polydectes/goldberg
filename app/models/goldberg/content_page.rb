@@ -4,6 +4,7 @@ begin require 'redcloth' rescue nil end
 
 module Goldberg
   class ContentPage < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
 
     belongs_to :permission, :class_name => 'Goldberg::Permission'

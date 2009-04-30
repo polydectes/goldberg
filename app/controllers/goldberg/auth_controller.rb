@@ -1,5 +1,6 @@
 module Goldberg
   class AuthController < ApplicationController
+    unloadable
     include Goldberg::Controller
 
     def self.set_user(session, user_id = nil)

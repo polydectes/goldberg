@@ -1,5 +1,6 @@
 module Goldberg
   class ControllerAction < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
     
     belongs_to :site_controller, :class_name => 'Goldberg::SiteController'

@@ -3,6 +3,7 @@ require "goldberg/menu"
 
 module Goldberg
   class Role < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
 
     has_many :users, :class_name => 'Goldberg::User'

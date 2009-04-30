@@ -1,5 +1,6 @@
 module Goldberg
   class SiteControllersController < ApplicationController
+    unloadable
     include Goldberg::Controller
 
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)

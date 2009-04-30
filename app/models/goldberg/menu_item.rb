@@ -1,5 +1,6 @@
 module Goldberg
   class MenuItem < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
     
     validates_presence_of :name, :label

@@ -1,5 +1,6 @@
 module Goldberg
   class SystemSettings < ActiveRecord::Base
+    unloadable
     set_table_name 'system_settings'
     include Goldberg::Model
     

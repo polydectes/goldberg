@@ -1,7 +1,9 @@
 module Goldberg
   class Menu
+    unloadable
 
     class Node
+      unloadable
       attr_accessor :parent, :parent_id, :children
       attr_accessor :site_controller_id, :controller_action_id, :content_page_id
       attr_accessor :id, :name, :label, :url

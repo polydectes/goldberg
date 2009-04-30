@@ -1,5 +1,6 @@
 module Goldberg
   class SystemSettingsController < ApplicationController
+    unloadable
     include Goldberg::Controller
 
     def index

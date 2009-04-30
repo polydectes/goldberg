@@ -1,5 +1,6 @@
 module Goldberg
   class SiteController < ActiveRecord::Base
+    unloadable
     include Goldberg::Model
 
     belongs_to :permission, :class_name => 'Goldberg::Permission'
