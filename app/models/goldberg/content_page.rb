@@ -5,7 +5,7 @@ begin require 'redcloth' rescue nil end
 module Goldberg
   class ContentPage < ActiveRecord::Base
     include Goldberg::Model
-
+    has_many :comments
     belongs_to :permission, :class_name => 'Goldberg::Permission'
     validates_presence_of :name, :title, :permission_id
     validates_uniqueness_of :name

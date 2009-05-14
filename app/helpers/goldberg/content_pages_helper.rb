@@ -19,5 +19,18 @@ window.onload = function()
 </script>
 END
     end
-  end
+
+  def dispCommentBlock
+    if(@content_page.arecomments == 1) then
+      #@comments = Comment.find(:all)
+      @comments = Comment.find(:all, :conditions => ["content_page_id =? AND kind = ?", @content_page.id,"content"],:order => ["created_at desc"])  
+      @comment = Goldberg::Comment.new
+      @comment.name  = Goldberg::user.fullname
+      @comment.email = Goldberg::user.email 
+      @comment.content_page_id = @content_page.id
+      render :partial => "goldberg/comments/displayComments"    
+    end
+    end
+
+   end
 end

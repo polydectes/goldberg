@@ -1,0 +1,17 @@
+<div id= "list_comments"  class = "commentslist">
+<h2> Comments</h2>
+<%@comments.each {|comment|%>
+<div class = "item">
+  <%=comment.name%> <%=comment.created_at%> 
+  <div id="email" class="commentmail">
+    <%=mail_to comment.email%>
+    </div>
+  <div id="text" class="commenttext"> 
+    <p>
+    <%=comment.text%>
+    </p>
+  </div>  
+</div>
+  <%}%>
+  <%= render :partial => "goldberg/comments/addComment" %> 
+</div>

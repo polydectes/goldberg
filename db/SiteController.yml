@@ -59,3 +59,9 @@
     permission_id: "1"
     id: "11"
     builtin: "1"
+    - !ruby/object:Goldberg::SiteController 
+  attributes: 
+    name: goldberg/comments
+    permission_id: "4"
+    id: "12"
+    builtin: "1"
