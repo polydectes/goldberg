@@ -29,8 +29,11 @@ namespace :goldberg do
   desc "Apply a site theme"
   task :theme, :theme_name, :needs => :environment do |t, args|
     source_dir = File.join(File.dirname(__FILE__), '..', 'themes')
-    theme = args.theme_name || 'goldberg'
+    puts("Args were #{args.inspect}")
+    puts("t : #{t}")
+    theme = args.theme_name || '960gs_snooker'
     theme_dir = File.join(source_dir, theme)
+    puts(theme_dir)
     if File.directory?(theme_dir)
       manifest = Rails::Generator::Manifest.new do |m|
         # Public assets: images, javascripts and stylesheets, including both the

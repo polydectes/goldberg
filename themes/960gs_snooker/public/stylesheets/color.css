@@ -1,0 +1,113 @@
+body {
+	background: #336699;
+}
+
+a {
+  color: #FFFF66 ;
+  background-color: transparent ;
+}
+
+a:hover {
+  color: #CCFF99 ;
+}
+
+.wrapper {
+background: #666666 ;
+}
+
+
+.constraintCont {
+background: white;
+}
+
+.header {
+  color: #FFFFFF;
+  background: #003e00 ;
+}
+
+.navbar {
+  background-color:  #666666 ;
+}
+
+
+
+#suckerfish a {
+  color: white ;
+}
+
+#suckerfish a:hover {
+  color: #FF0000
+}
+
+
+#suckerfish li ul li a.daddy {
+  background-image: url("/goldberg/images/daddy_rightarrow.gif") ;
+  background-position: right center ;
+  background-repeat: no-repeat ;
+}
+
+
+#suckerfish li ul {
+  background: #454545 ;
+}
+
+
+.main {
+  background: #966666;
+
+}
+
+.breadcrumbs {
+  background: #666666;
+}
+
+.sidebar {
+  background: white;
+  color: black;
+}
+
+.sidecontent { 
+  background: white ;
+  color: #666666 ;
+}
+
+.cm {
+ background:white ;
+}
+
+.content {
+  background: #666666 ;
+}
+
+.footer {
+  color: white ;
+  background: #6d7a73 url('/goldberg/images/footer_bg.png') repeat-x top ;
+}
+
+.footer a {
+  color: #FFFF66 ;
+}
+
+.footer a:hover {
+  color: white ;
+}
+
+
+.clearing {
+  background: #866666 ;
+}
+ 
+.auto_complete {
+      background-color:white;
+}
+    
+.auto_complete ul li.selected 
+{ 
+            background-color: #000;
+
+}
+
+.login_link {
+color: black ;
+}
+
