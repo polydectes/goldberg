@@ -16,7 +16,7 @@ module Goldberg
         if not @markup_styles
           @markup_styles = []
           # If FCKeditor is installed, allow it.
-          if File.directory?(File.join RAILS_ROOT, 'public', 'fckeditor')
+          if File.directory?(File.join RAILS_ROOT, 'public', 'ckeditor')
             @markup_styles << 'FCKeditor'
           end
           # These are the basic styles.
