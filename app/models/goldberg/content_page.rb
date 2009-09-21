@@ -15,9 +15,9 @@ module Goldberg
       def markup_styles
         if not @markup_styles
           @markup_styles = []
-          # If FCKeditor is installed, allow it.
+          # If CKeditor is installed, allow it.
           if File.directory?(File.join RAILS_ROOT, 'public', 'ckeditor')
-            @markup_styles << 'FCKeditor'
+            @markup_styles << 'CKEditor'
           end
           # These are the basic styles.
           @markup_styles += ['Raw HTML', 'Plain text']

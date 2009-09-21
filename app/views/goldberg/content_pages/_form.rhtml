@@ -25,7 +25,7 @@ Required</label><br/>
 
 <div id='content_editor'>
 <p>
-<% if @content_page.markup_style == 'FCKeditor' -%>
+<% if (@content_page.markup_style == 'FCKeditor' or @content_page.markup_style == 'CKEditor') -%>
 <%= fckeditor_text_area 'content_text' %>
 <% else -%>
 <label for="content_page_content">Content</label><br/>
