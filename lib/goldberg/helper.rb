@@ -49,7 +49,28 @@ module Goldberg
     def goldberg_login
       render :file => "#{RAILS_ROOT}/vendor/plugins/goldberg/app/views/goldberg/auth/_login.rhtml", :use_full_path => false
     end
+   
+    
+   #return the current MenuItem
+    def get_Menu_Item
+        item_name = session[:goldberg][:menu_item]
+   end
 
+  #returns the main menu name  
+   def main_Menu_Name
+        Goldberg.menu.main_Menu_Name
+   end
+   
+  #checks wether a user defined css-file exists 
+   def own_css_exist?
+    path="#{RAILS_ROOT}/public/stylesheets/#{main_Menu_Name}/all.css"
+    if FileTest.exists?(path)
+      return  true
+    else
+     return false
+    end
+   end
+  
   end  
 end
 

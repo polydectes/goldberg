@@ -7,15 +7,19 @@
 <link rel="stylesheet" href="/goldberg/stylesheets/goldberg.css" 
 type="text/css" media="screen" />
 <script type="text/javascript" src="/goldberg/javascripts/jquery-1.3.2.min.js"></script>
- <script type="text/javascript">
+<script type="text/javascript">
   jQuery.noConflict();
 </script>
 
 <link rel="stylesheet" href="/goldberg/stylesheets/reset.css" 
 <script type="text/javascript" src="/goldberg/javascripts/suckerfish.js"></script>
-<link rel="stylesheet" href="/goldberg/stylesheets/all.css" 
-type="text/css" media="screen" />
- <%= javascript_include_tag :defaults %>
+
+<% if own_css_exist?-%>
+  <link rel="stylesheet" href= "/stylesheets/<%= main_Menu_Name%>/all.css" type="text/css" media="screen"/>
+<%else%>
+  <link rel="stylesheet" href="/goldberg/stylesheets/all.css" type="text/css" media="screen" />
+<%end%>
+<%= javascript_include_tag :defaults %>
  <% if defined?(RAILS_ROOT)
      if File.exists?("#{RAILS_ROOT}/public/stylesheets/ajax_scaffold.css") -%>
 <%= stylesheet_link_tag 'ajax_scaffold', :media => 'all' %>
@@ -29,18 +33,12 @@ type="text/css" media="screen" />
 <body>
   	<div class="clear">&nbsp;</div>
         <div class="wrapper container_16">
-  <div class="header grid_13 alpha omega  ">
+  <div class="header">
     <div class="prefix_1">
-       <h1><%= Goldberg.settings.site_name %></h1>
-       <h2><%= Goldberg.settings.site_subtitle%></h2>
+      <h1><%= main_Menu_Name%></h1>
+      <h2><%= Goldberg.settings.site_name %></h2>
      </div>  
    </div>
-     <div class="grid_3 alpha">
-       
-    <img class="himg" src="/goldberg/images/logo.jpg"/>
-<!-- Could put something here like some top links -->
-<!--p class="right_text"></p-->
-</div>
 <div class="navbar grid_16">
   <div class="topmenu ">
     <ul id="suckerfish">

@@ -1,7 +1,26 @@
-extensions from erhard
+own theme for every main menu entry.
 
-comments
-for every contentpage a commentsection  is introduced.
+You can create for every main menu entry a own theme.
+A main menu entry is the menu directly under the root node of menu.
+
+Howto :
+
+1. Install 960gs_snooker theme
+2. copy the files frome the directory public/goldberg/stylesheets to 
+   public/stylesheets/<nameOftheMenu>
+
+NameOftheMenu is the field "name" of the menuItem (you find it for example :
+http://localhost:3000/goldberg/menu_items/edit/1
+
+3. Modify the css - files to Your own need
+
+4. Don't delete or rename all.css this file is the entrypoint and called from the system
+
+
+
+Comments
+
+For every contentpage a comment-section  is introduced.
 Comments on a contentpage are displayed and can be added.
 
 960gs_snooker
@@ -13,6 +32,9 @@ Inspired of the book "transcending css" the existing snooker-design was modified
 1. color.css
 2. layout.css
 3. typo.css
+
+This three ccs files are called in all.css 
+
 
 In that way it is easier to adopt the design to your own CI.
 
