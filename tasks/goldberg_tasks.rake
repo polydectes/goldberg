@@ -10,7 +10,7 @@ namespace :goldberg do
     Goldberg::Migrator.plugin_name = 'goldberg'
     Goldberg::Migrator.migrate(ENV['VERSION'])
   end
-  
+
   desc "Load standard Goldberg tables from files in db/"
   task :load_bootstrap => :migrate do
     Goldberg::Migration.load_bootstrap
@@ -25,15 +25,17 @@ namespace :goldberg do
   desc "Upgrade Goldberg"
   task :upgrade => :migrate do
   end
-  
-  desc "Apply a site theme"
+
+  desc "Apply a site theme the new syntax is goldberg:theme[theme_name]  "
   task :theme, :theme_name, :needs => :environment do |t, args|
     source_dir = File.join(File.dirname(__FILE__), '..', 'themes')
     puts("Args were #{args.inspect}")
     puts("t : #{t}")
-    theme = args.theme_name || '960gs_snooker'
+    theme = args[:theme_name] 
     theme_dir = File.join(source_dir, theme)
+    puts("----------------------------------------1")
     puts(theme_dir)
+    puts("----------------------------------------2")
     if File.directory?(theme_dir)
       manifest = Rails::Generator::Manifest.new do |m|
         # Public assets: images, javascripts and stylesheets, including both the
@@ -57,22 +59,22 @@ namespace :goldberg do
       base = Rails::Generator::Base.new([], :source => source_dir)
       commands = Rails::Generator::Commands::Create.new(base)
       manifest.replay(commands)
-    else  # theme directory doesn't exist
+    else # theme directory doesn't exist
       raise ArgumentError.new,
       "No such theme '#{theme}'"
     end
   end
-  
+
   desc "Flush cached data out of sessions and Roles"
   task :flush => :environment do
     puts "Deleting any Rails session files"
     Dir["#{RAILS_ROOT}/tmp/sessions/ruby_sess*"].each do |fname|
       File.delete fname
     end
-    
+
     puts "Deleting any ActiveRecord sessions, and resetting the Role cache"
     conn = ActiveRecord::Base.connection
-    begin  # Capture error if sessions table doesn't exist
+    begin # Capture error if sessions table doesn't exist
       conn.execute "delete from sessions"
     rescue
       nil
