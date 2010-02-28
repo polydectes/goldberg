@@ -1,3 +1,15 @@
+Adding blueprint-css
+
+Istall :
+
+rake goldberg:theme[blue_snooker]
+
+Now You can use blueprint-css instead of 960gs
+Now works with rails 2.3.5 (changed rake syntax)
+
+
+
+
 own theme for every main menu entry.
 
 You can create for every main menu entry a own theme.
