@@ -87,6 +87,7 @@
 }
 
 .sidebar {
+min-height: 400px ;
 }
 
 .content {
@@ -100,7 +101,7 @@
 }
 
 .sidecontent { 
-min-height: 400px ;
+
 }
 
 .footer {

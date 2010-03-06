@@ -66,7 +66,7 @@ class InitialSetup < ActiveRecord::Migration
       t.column "description", :string, :limit => 255, :default => "", :null => false
       t.column "default_page_id", :integer
       t.column "cache", :text
-      t.column "created_at", :timestamp
+      t.column "created_at", :timestamp                    
       t.column "updated_at", :timestamp
     end
 

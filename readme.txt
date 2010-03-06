@@ -1,12 +1,44 @@
-Adding blueprint-css
 
-Istall :
+Sidebar 2010/03/06
+
+Adding sidecontent - html files (only available with theme blue_snooker)
+under the login link there is a lot of whitespace. This space is used now.
+Edit the file public/goldberg/html/sidebar.xhtml to your own needs or delete it.
+
+The functionality with different skins according to the mainmenue - introduced with 960gs - still exists and is
+expanded to different use of witespace according to your main-menu-names.
+
+create a directory : public/html/<main-menu-name>
+add there a file sidebar.html or xhtml
+
+This is displayed when used subpages under a mainmenu.
+
+
+
+
+Adding mega-menus  (only available with theme blue_snooker)  2010/03/04
+
+
+Megamenus are menus with a fixed depth of hirarchy. In our case the maximum is 3.
+You can see the main menu + the first topic + the 3 level as mouseover functionality.
+To switch this functionality on or off go to Your config/environment.rb of Your
+ruby project and add
+
+ $mega_menu = true
+
+
+
+
+
+Adding blueprint-css 2010/02/28
+
+Install :
 
 rake goldberg:theme[blue_snooker]
 
-Now You can use blueprint-css instead of 960gs
-Now works with rails 2.3.5 (changed rake syntax)
-
+You can use blueprint-css instead of 960gs
+works with rails 2.3.5 (changed rake syntax)
+with blueprint-css 960gs is not supported anymore from me
 
 
 
@@ -35,7 +67,10 @@ Comments
 For every contentpage a comment-section  is introduced.
 Comments on a contentpage are displayed and can be added.
 
-960gs_snooker
+
+
+
+960gs_snooker (can be used but not under development any more)
 
 On the basis of the existing snooker design 960gs is introduced.
 

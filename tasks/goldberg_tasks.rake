@@ -1,4 +1,4 @@
-namespace :goldberg do
+namespace :goldberg do    
 
   desc "Dump standard Goldberg tables to files in db/"
   task :dump_bootstrap => :environment do
@@ -12,9 +12,16 @@ namespace :goldberg do
   end
 
   desc "Load standard Goldberg tables from files in db/"
-  task :load_bootstrap => :migrate do
+  task :load_bootstrap => [:migrate, :purge_data] do
     Goldberg::Migration.load_bootstrap
   end
+
+  desc "deletes all goldberg-Content"
+  task :purge_data do
+    Goldberg::Migration.goldberg_classes.each do |gclass|
+    gclass.delete_all
+    end
+  end                                   
 
   desc "Install Goldberg"
   task :install => :load_bootstrap do
@@ -33,14 +40,11 @@ namespace :goldberg do
     puts("t : #{t}")
     theme = args[:theme_name] 
     theme_dir = File.join(source_dir, theme)
-    puts("----------------------------------------1")
-    puts(theme_dir)
-    puts("----------------------------------------2")
     if File.directory?(theme_dir)
       manifest = Rails::Generator::Manifest.new do |m|
         # Public assets: images, javascripts and stylesheets, including both the
         # common files and files specific to the specified theme.
-        ['images', 'javascripts', 'stylesheets'].each do |asset|
+        ['images', 'javascripts', 'stylesheets', 'html'].each do |asset|
           dest_dir = File.join('public/goldberg', asset)
           m.directory dest_dir
           ['common', theme].each do |src|
