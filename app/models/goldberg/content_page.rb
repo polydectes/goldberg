@@ -6,7 +6,7 @@ module Goldberg
   class ContentPage < ActiveRecord::Base
     unloadable
     include Goldberg::Model
-
+    has_many :comments
     belongs_to :permission, :class_name => 'Goldberg::Permission'
     validates_presence_of :name, :title, :permission_id
     validates_uniqueness_of :name
@@ -16,9 +16,9 @@ module Goldberg
       def markup_styles
         if not @markup_styles
           @markup_styles = []
-          # If FCKeditor is installed, allow it.
-          if File.directory?(File.join RAILS_ROOT, 'public', 'fckeditor')
-            @markup_styles << 'FCKeditor'
+          # If CKeditor is installed, allow it.
+          if File.directory?(File.join RAILS_ROOT, 'public', 'ckeditor')
+            @markup_styles << 'CKEditor'
           end
           # These are the basic styles.
           @markup_styles += ['Raw HTML', 'Plain text']

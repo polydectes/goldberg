@@ -169,6 +169,15 @@ module Goldberg
       end
     end
 
+  # Returns the name of the main menu
+    # or nil
+    def main_Menu_Name
+      @vector.each { |e| 
+        if e.name!= nil
+          return e.name
+        end 
+      }
+    end
 
     # Returns the name of the currently-selected item
     # or nil if no item is selected.

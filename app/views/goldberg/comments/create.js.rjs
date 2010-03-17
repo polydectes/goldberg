@@ -1,0 +1,3 @@
+page[:list_comments].replace_html ""
+page.insert_html :bottom, :list_comments,:partial => "displayComments", :object => @comments
+

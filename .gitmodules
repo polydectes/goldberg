@@ -1,0 +1,3 @@
+[submodule "themes/blue_snooker/blueprint-css"]
+	path = themes/blue_snooker/blueprint-css
+	url = http://github.com/erhard/blueprint-css.git

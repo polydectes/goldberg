@@ -1,0 +1,32 @@
+<h1>Listing comments</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Goldberg page</th>
+    <th>Goldberg user</th>
+    <th>Reference comment</th>
+  </tr>
+
+<% for comment in @comments %>
+  <tr>
+    <td><%=h comment.title %></td>
+    <td><%=h comment.text %></td>
+    <td><%=h comment.email %></td>
+    <td><%=h comment.name %></td>
+    <td><%=h comment.goldberg_page_id %></td>
+    <td><%=h comment.goldberg_user_id %></td>
+    <td><%=h comment.reference_comment_id %></td>
+    <td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New comment', new_comment_path %>

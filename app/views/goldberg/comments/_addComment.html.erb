@@ -1,0 +1,23 @@
+<%javascript_include_tag :defaults %>
+<div class="comment">
+  <h2> New Comment</h2>
+  <p>
+  <%remote_form_for @comment, :url => {:controller => :comments, :action => :create}, :id => "addComment" do |f| %>
+  <%=f.label :Name%>
+  <%=f.text_field :name%>
+  </p>
+  <p>
+  <%=f.label :email%>
+  <%=f.text_field :email%>
+  </p>
+  <p>
+  <%=f.label :comment%>
+   </p>
+    <p> 
+    <%=f.text_area :text, :size => "100", :rows => "20"%> 
+    </p>
+    <%=f.hidden_field :content_page_id, :field => @comment.content_page_id %>
+    <%=f.hidden_field :kind, :name => "content"%>
+    <%=submit_tag "OK"%>
+  <%end%>
+</div>  

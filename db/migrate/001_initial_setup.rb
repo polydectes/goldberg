@@ -16,6 +16,7 @@ class InitialSetup < ActiveRecord::Migration
       t.column "name", :string, :default => "", :null => false
       t.column "permission_id", :integer, :default => 0, :null => false
       t.column "builtin", :integer, :default => 0
+      t.column "comment", :boolean, :default => false
     end
 
     add_index "#{prefix}site_controllers", ["permission_id"], :name => "fk_site_controller_permission_id"
@@ -65,7 +66,7 @@ class InitialSetup < ActiveRecord::Migration
       t.column "description", :string, :limit => 255, :default => "", :null => false
       t.column "default_page_id", :integer
       t.column "cache", :text
-      t.column "created_at", :timestamp
+      t.column "created_at", :timestamp                    
       t.column "updated_at", :timestamp
     end
 

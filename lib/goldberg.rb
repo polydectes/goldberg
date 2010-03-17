@@ -32,6 +32,15 @@ module Goldberg
       @settings = nil
     end
 
+#Returns the name of the main menu
+# or nil
+  def main_Menu_Name
+    @vector.each { |e| 
+      if e.name!= nil
+       return e.name
+      end 
+    }
   end
+ end
   
 end

@@ -140,3 +140,31 @@ color: #000;
 .tablist a:hover { color: #f00; }
 .tablist ul a:hover { color: #f00 !important; }
 
+
+.comment {
+border-top: 50px solid #fff;
+}
+
+.comment h2 
+{
+color: green;
+}
+
+.commentslist{
+}
+
+.item
+{
+padding-top: 20px;
+border-bottom: black solid 1px;
+}
+
+.commentmail
+{
+color: blue;
+}
+
+.commenttext{
+border-top: 100px;
+}
+

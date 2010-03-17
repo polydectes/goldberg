@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-AU">
+<head>
+  <title><%= goldberg_title %></title>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+  <link rel="stylesheet" href="/goldberg/stylesheets/goldberg.css"
+        type="text/css" media="screen"/>
+  <script type="text/javascript" src="/goldberg/javascripts/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript">
+      jQuery.noConflict();
+  </script>
+  <link rel="stylesheet" href="/goldberg/stylesheets/screen.css"
+        type="text/css" media="screen"/>
+  <link rel="stylesheet" href="/goldberg/stylesheets/print.css"
+        type="text/css" media="print"/>
+  <link rel="stylesheet" href="/goldberg/stylesheets/reset.css"
+  <% if $mega_menu %>
+      <link rel="stylesheet" type="text/css" href="/goldberg/stylesheets/jkmegamenu.css"/>
+      <script type="text/javascript" src="/goldberg/javascripts/jkmegamenu.js"></script>
+  <% else %>
+      <script type="text/javascript" src="/goldberg/javascripts/suckerfish.js"></script>
+  <% end %>
+  <% if own_css_exist? -%>
+      <link rel="stylesheet" href="/stylesheets/<%= main_Menu_Name %>/all.css" type="text/css" media="screen"/>
+  <% else %>
+      <link rel="stylesheet" href="/goldberg/stylesheets/all.css" type="text/css" media="screen"/>
+  <% end %>
+  <%= javascript_include_tag :defaults %>
+  <% if defined?(RAILS_ROOT)
+      if File.exists?("#{RAILS_ROOT}/public/stylesheets/ajax_scaffold.css") -%>
+          <%= stylesheet_link_tag 'ajax_scaffold', :media => 'all' %>
+      <% end
+         if File.exists?("#{RAILS_ROOT}/public/javascripts/ajax_scaffold.js") -%>
+          <%= javascript_include_tag 'rico_corner', 'ajax_scaffold' %>
+      <% end
+         end -%>
+  <script type="text/javascript" src="/goldberg/javascripts/jquery.blueprint_24_0.1.js"></script>
+</head>
+<body>
+<div class="clear">&nbsp;</div>
+<div class="wrapper container">
+  <div class="header span-24 last">
+    <h1><%= main_Menu_Name %></h1>
+
+    <h2><%= Goldberg.settings.site_name %></h2>
+  </div>
+  <div class="span-16 navbar">
+    <% if $mega_menu %>
+        <ul id="mega_menu_id">
+          <%= mega_menu %>
+        </ul>
+    <% else %>
+        <ul id="suckerfish">
+          <%= goldberg_suckerfish_menu %>
+        </ul>
+    <% end %>
+  </div>
+  <div class="breadcrumbs span-16">
+    <%= goldberg_breadcrumbs %>
+  </div>
+  <div class="content span-16">
+    <% if flash[:note] -%>
+        <div class="flash_note"><%= flash[:note] %></div>
+    <% elsif flash[:error] -%>
+        <div class="error"><%= flash[:error] %></div>
+    <% end -%>
+    <%= yield %>
+  </div>
+  <!-- class="content" -->
+  <div class="sidebar span-8 last">
+    <div class="sidecontent span-8 last">
+      <%= goldberg_login %>
+    </div>
+    <div id="common_message">
+
+
+      <%filename = side_bar_file%>
+      <% if filename %>
+          <% lines=IO.readlines(filename) %>
+          <%= render :text => lines %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- class="sidebar" -->
+  <div class="footer span-24 last">
+    <p style="text-align:center"><%= Goldberg.settings.footer_message %></p>
+  </div>
+  <!-- class="footer" -->
+</div>
+<!--class="wrapper" -->
+<% if Goldberg.user!= nil then %>
+    <% if Goldberg.user.name == "admin" then %>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            // onload
+            jQuery(function() {
+                jQuery("body").addGrid('/goldberg/images/grid.png');
+            });
+            /*]]>*/
+        </script>
+    <% end %>
+<% end %>
+</body>
+</html>
+

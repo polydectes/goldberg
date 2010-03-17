@@ -160,3 +160,10 @@
     id: "23"
     url_to_use: ""
     site_controller_id: "10"
+    - !ruby/object:Goldberg::ControllerAction 
+  attributes: 
+    name: create
+    permission_id: "4"
+    id: "24"
+    url_to_use: ""
+    site_controller_id: "12"

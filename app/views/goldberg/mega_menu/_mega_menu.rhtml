@@ -1,0 +1,58 @@
+<%# There are only 3 hirarchies possible in that magamenu . Megamenus are in common more structured than recursive menus like the suckerfish menu
+ If You do not know the depth of your structure you should not use it
+%>
+<%# main level setting up the mainmenu items %>
+
+<%##Fetch first all main menus>%>
+<script type="text/javascript">
+    <%anchor_name = "megaanchor"
+  menu_id     =  "megamenu"
+  counters = Hash.new
+   counters[:level0] = 0
+   counters[:level1] = 0
+   counters[:level2] = 0>
+  count = 0%>
+
+</script>
+<% for item_id in items do
+    item = Goldberg.menu.get_item(item_id)
+    selected = Goldberg.menu.selected?(item.id) -%>
+    <a class="megatab" href="/menu/"<%= item.name %>  id="<%= anchor_name+ counters[:level0].to_s %>"> <%= item.label %> </a>
+    <!--Mega Drop Down Menu HTML. Retain given CSS classes-->
+    <div id="<%= menu_id + counters[:level0].to_s %>" class="megamenu">
+      <% counters[:level0] = counters[:level0] + 1 %>
+      <%# second level %>
+
+      <% if item.children
+          items2 = item.children -%>
+          <% for item_id2 in items2 do
+              item2 = Goldberg.menu.get_item(item_id2)
+              selected = Goldberg.menu.selected?(item2.id) -%>
+              <div class="column">
+                <h3><a class="sub1" href="/menu/<%= item2.name %>"><%= item2.label %></a></h3>
+                <ul>
+                  <%# third level level %>
+                  <% if item2.children
+                      items3 = item2.children -%>
+                      <% for item_id3 in items3 do
+                          item3 = Goldberg.menu.get_item(item_id3)
+                          selected = Goldberg.menu.selected?(item3.id) -%>
+                          <li><a href="/menu/<%= item3.name %>"><%= item3.label %></a></li>
+                      <% end %>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+      <% end %>
+    </div>
+<% end %>
+<script>
+    <% for item_id in items do
+ item = Goldberg.menu.get_item(item_id)
+ selected = Goldberg.menu.selected?(item.id) -%>
+    jkmegamenu.definemenu("<%=anchor_name + count.to_s%>", "<%=menu_id + count.to_s%>", "mouseover")
+    <%count = count + 1
+  end%>
+</script>
+

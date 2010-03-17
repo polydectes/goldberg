@@ -1,9 +1,9 @@
-require 'goldberg/system_settings'
-require 'goldberg/credentials'
-require 'goldberg/menu'
-require 'goldberg/user'
-require 'goldberg/content_page'
-require 'goldberg/role'
+require_dependency 'goldberg/system_settings'
+require_dependency 'goldberg/credentials'
+require_dependency 'goldberg/menu'
+require_dependency 'goldberg/user'
+require_dependency 'goldberg/content_page'
+require_dependency 'goldberg/role'
 
 module Goldberg
   module Filters
@@ -71,7 +71,7 @@ module Goldberg
       if Goldberg.settings.self_reg_enabled and
           Goldberg.user.self_reg_confirmation_required 
         logger.info "User not confirmed"
-        Goldberg::AuthController.logout(session)
+        reset_session
         respond_to do |format|
           format.html do
             redirect_to Goldberg.settings.self_reg_confirmation_error_page.url
@@ -95,7 +95,7 @@ module Goldberg
       if Goldberg.settings.session_timeout > 0 and session[:last_time]
         if (Time.now - session[:last_time]) > Goldberg.settings.session_timeout
           logger.info "Session: time expired"
-          Goldberg::AuthController.logout(session)
+          reset_session
           respond_to do |format|
             format.html do
               redirect_to Goldberg.settings.session_expired_page.url
