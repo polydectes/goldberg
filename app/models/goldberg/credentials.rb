@@ -1,6 +1,5 @@
 module Goldberg
   class Credentials
-    unloadable
 
     attr_accessor :role_id, :updated_at, :role_ids
     attr_accessor :permission_ids
@@ -116,7 +115,7 @@ module Goldberg
           # logger.info "Page: authorised"
           authorised = true
         else
-        # logger.info "Page: NOT authorised"
+          # logger.info "Page: NOT authorised"
         end
       else
         # logger.warn "(Unknown page? #{page})"

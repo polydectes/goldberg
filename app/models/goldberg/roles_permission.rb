@@ -1,6 +1,5 @@
 module Goldberg
   class RolesPermission < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
 
     validates_presence_of :role_id, :permission_id
@@ -11,7 +10,7 @@ select rp.*, p.name
 from #{prefix}roles_permissions rp inner join #{prefix}permissions p 
   on rp.permission_id = p.id 
 where role_id in (?) order by p.name
-END
+      END
       return find_by_sql([querystr, role_ids])
     end
     

@@ -1,11 +1,10 @@
 module Goldberg
   class RolesController < ApplicationController
-    unloadable
     include Goldberg::Controller
 
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+      :redirect_to => { :action => :list }
 
     def index
       list
@@ -14,7 +13,7 @@ module Goldberg
 
     def list
       @roles = Role.find(:all,
-                         :order => 'name')
+        :order => 'name')
     end
 
     def show
@@ -69,17 +68,17 @@ module Goldberg
     def foreign
       if @role.id
         @other_roles = Role.find(:all,
-                                 :conditions => ['id not in (?)', @role.id],
-                                 :order => 'name')
+          :conditions => ['id not in (?)', @role.id],
+          :order => 'name')
       else
         @other_roles = Role.find(:all,
-                                 :order => 'name')
+          :order => 'name')
       end
       @other_roles ||= Array.new
       @other_roles.unshift Role.new(:id => nil, :name => '(none)')
       @users = User.find(:all,
-                         :conditions => ['role_id = ?', @role.id],
-                         :order => 'name')
+        :conditions => ['role_id = ?', @role.id],
+        :order => 'name')
     end
     
   end

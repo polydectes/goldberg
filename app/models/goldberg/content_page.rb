@@ -4,9 +4,8 @@ begin require 'redcloth' rescue nil end
 
 module Goldberg
   class ContentPage < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
-    has_many :comments
+    has_many :comments, :class_name => 'Goldberg::Comment'
     belongs_to :permission, :class_name => 'Goldberg::Permission'
     validates_presence_of :name, :title, :permission_id
     validates_uniqueness_of :name
@@ -39,8 +38,8 @@ module Goldberg
           return []
         else
           return find(:all, 
-                      :conditions => ['permission_id in (?)', p_ids],
-                      :order => 'name')
+            :conditions => ['permission_id in (?)', p_ids],
+            :order => 'name')
         end
       end
       
@@ -60,7 +59,7 @@ module Goldberg
             line = io.readline.chomp
             if line =~ /^\&/
               parts = line.split(' ', 5)
-            word = parts[1]
+              word = parts[1]
               suggestions = parts[4].split(', ').collect do |suggestion|
                 "'#{javascript_esc(suggestion)}'"
               end

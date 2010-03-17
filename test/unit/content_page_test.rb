@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ContentPageTest < Test::Unit::TestCase
+class ContentPageTest < ActiveSupport::TestCase
   include Goldberg::TestHelper
 
   def setup

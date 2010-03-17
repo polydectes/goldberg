@@ -1,11 +1,10 @@
 module Goldberg
   class ContentPagesController < ApplicationController
-    unloadable
     include Goldberg::Controller
   
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+      :redirect_to => { :action => :list }
 
     def index
       list
@@ -28,7 +27,7 @@ module Goldberg
           @content_page = ContentPage.find(Goldberg.settings.not_found_page_id)
         else
           @content_page = ContentPage.new(:id => nil, 
-                                          :content => '(no such page)')
+            :content => '(no such page)')
         end
       end
     end
@@ -38,7 +37,7 @@ module Goldberg
         @content_page = ContentPage.find(Goldberg.settings.site_default_page_id)
       else
         @content_page = ContentPage.new(:id => nil, 
-                                        :content => '(Site not configured)')
+          :content => '(Site not configured)')
       end
     end
 
@@ -97,9 +96,9 @@ module Goldberg
       @permissions = Permission.find(:all, :order => 'name')
       if @content_page.id
         @menu_items = MenuItem.find(:all,
-                                    :order => 'label',
-                                    :conditions => ['content_page_id=?', 
-                                                    @content_page.id])
+          :order => 'label',
+          :conditions => ['content_page_id=?',
+            @content_page.id])
         @system_pages = Goldberg.settings.system_pages @content_page.id
       end
     end

@@ -1,11 +1,10 @@
 module Goldberg
   class SiteControllersController < ApplicationController
-    unloadable
     include Goldberg::Controller
 
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+      :redirect_to => { :action => :list }
 
     def index
       list
@@ -14,21 +13,21 @@ module Goldberg
 
     def list
       @builtin_site_controllers = SiteController.find(:all,
-                                                      :conditions => "builtin = 1",
-                                                      :order => 'name')
+        :conditions => "builtin = 1",
+        :order => 'name')
       @app_site_controllers = 
         SiteController.find(:all,
-                            :conditions => "builtin is null or builtin = 0",
-                            :order => 'name')
+        :conditions => "builtin is null or builtin = 0",
+        :order => 'name')
       classify_controllers
     end
 
     def show
       @site_controller = SiteController.find(params[:id])
       @actions = ControllerAction.find(:all,
-                                       :conditions => ['site_controller_id = ?',
-                                                       params[:id] ],
-                                       :order => 'name')
+        :conditions => ['site_controller_id = ?',
+          params[:id] ],
+        :order => 'name')
     end
 
     def new
@@ -95,7 +94,7 @@ module Goldberg
       from_classes = SiteController.classes
       
       from_db = SiteController.find(:all,
-                                    :order => 'name')
+        :order => 'name')
       known = Hash.new
       @missing = Array.new
       for dbc in from_db do

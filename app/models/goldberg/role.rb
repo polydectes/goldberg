@@ -3,7 +3,6 @@ require_dependency "goldberg/menu"
 
 module Goldberg
   class Role < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
 
     has_many :users, :class_name => 'Goldberg::User'
@@ -18,7 +17,7 @@ module Goldberg
         roles = Role.find(:all)
         
         for role in roles do
-        role.cache = nil ; role.save # we have to do this to clear it
+          role.cache = nil ; role.save # we have to do this to clear it
           
           role.cache = Hash.new
           role.rebuild_credentials

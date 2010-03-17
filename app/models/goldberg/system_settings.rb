@@ -1,16 +1,15 @@
 module Goldberg
   class SystemSettings < ActiveRecord::Base
-    unloadable
     set_table_name 'system_settings'
     include Goldberg::Model
     
     attr_accessor :public_role, :default_markup_style
     attr_accessor :site_default_page, :not_found_page, :permission_denied_page,
-    :session_expired_page
+      :session_expired_page
 
     # Make sure that all the standard pages have been set.
     validates_presence_of :public_role_id, :site_default_page_id, :not_found_page_id,
-    :permission_denied_page_id, :session_expired_page_id
+      :permission_denied_page_id, :session_expired_page_id
 
     # If self-reg is enabled, ensure there is a self-reg role set.
     validates_each :self_reg_enabled do |record, attr, value|
@@ -19,17 +18,17 @@ module Goldberg
         record.errors.add attr, <<-END
 If self-registration is enabled, you must specify the default Role to
 assign to self-registered users.
-END
+        END
         result = false
       end
 
       if value and not (record.self_reg_confirmation_error_page_id and
-                        record.self_reg_confirmation_error_page_id > 0)
+            record.self_reg_confirmation_error_page_id > 0)
         record.errors.add attr, <<-END
 If self-registration is enabled, you must specify an error page to be
 displayed to any users who try to access the site, but who are not yet
 confirmed.
-END
+        END
         result = false
       end
       result
@@ -104,9 +103,9 @@ END
 
     def self_reg_confirmation_error_page
       @self_reg_confirmation_error_page ||= (self.self_reg_confirmation_error_page_id ?
-                                             ContentPage.find(self.self_reg_confirmation_error_page_id) :
-                                             ContentPage.new(:id => nil, :name => '(none)')
-                                             )
+          ContentPage.find(self.self_reg_confirmation_error_page_id) :
+          ContentPage.new(:id => nil, :name => '(none)')
+      )
     end
 
   end

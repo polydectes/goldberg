@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PermissionTest < Test::Unit::TestCase
+class PermissionTest < ActionController::TestCase
   include Goldberg::TestHelper
 
   def test_invalid_without_name

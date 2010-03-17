@@ -2,12 +2,11 @@ require 'digest/sha1'
 
 module Goldberg
   class UsersController < ApplicationController
-    unloadable
     include Goldberg::Controller
 
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+      :redirect_to => { :action => :list }
 
     before_filter do
       @self_reg = false
@@ -15,15 +14,15 @@ module Goldberg
       true  # proceed...
     end
     before_filter :foreign,
-    :only => [:new,    :delegate_register, :create, :delegate_create,
-              :edit,   :delegate_edit,     :update, :delegate_update]
+      :only => [:new,    :delegate_register, :create, :delegate_create,
+      :edit,   :delegate_edit,     :update, :delegate_update]
     before_filter :enable_self_reg,
-    :only => [:self_show, :self_register, :self_create, :self_edit,
-              :self_update, :confirm_registration, :confirm_registration_submit]
+      :only => [:self_show, :self_register, :self_create, :self_edit,
+      :self_update, :confirm_registration, :confirm_registration_submit]
     before_filter :enable_delegate_reg,
-    :only => [:delegate_list, :delegate_show, :delegate_register,
-              :delegate_create, :delegate_edit, :delegate_update,
-              :delegate_destroy]
+      :only => [:delegate_list, :delegate_show, :delegate_register,
+      :delegate_create, :delegate_edit, :delegate_update,
+      :delegate_destroy]
     
     def list
       if @delegate_reg
@@ -183,7 +182,7 @@ module Goldberg
           if @user.update_attributes(params[:user])
             flash.now[:notice] = 'User was successfully updated.'
             redirect_to :action => (@self_reg ? 'self_show' : 'show'),
-            :id => @user
+              :id => @user
           else
             render :action => 'edit'
           end
@@ -205,7 +204,7 @@ module Goldberg
 
     def forgot_password_submit
       @user = User.find_by_name_and_email(params[:user][:name],
-                                          params[:user][:email])
+        params[:user][:email])
       if @user
         if (not @user.self_reg_confirmation_required)
           @user.set_confirmation_key

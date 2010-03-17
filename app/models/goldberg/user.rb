@@ -2,7 +2,6 @@ require 'active_support/secure_random'
 
 module Goldberg
   class User < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
 
     belongs_to :role, :class_name => 'Goldberg::Role'
@@ -17,7 +16,7 @@ module Goldberg
       if self.clear_password  # Only update password if changed
         self.password_salt = self.object_id.to_s + rand.to_s
         self.password = Goldberg::CryptoPassSha512.encrypt(self.password_salt +
-                                                  self.clear_password)
+            self.clear_password)
       end
     end
       
@@ -52,7 +51,7 @@ module Goldberg
       self.email &&
         self.email.length > 0 &&
         # http://regexlib.com/DisplayPatterns.aspx
-        self.email =~ /\A[A-Z0-9_\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2,4}|museum|travel)\z/i
+      self.email =~ /\A[A-Z0-9_\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2,4}|museum|travel)\z/i
     end
 
     def get_start_path

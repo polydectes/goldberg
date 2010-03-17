@@ -1,11 +1,10 @@
 module Goldberg
   class SiteController < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
 
     belongs_to :permission, :class_name => 'Goldberg::Permission'
     has_many :controller_actions, :class_name => 'Goldberg::ControllerAction', :order => 'name',
-    :dependent => :destroy
+      :dependent => :destroy
     
     validates_presence_of :name, :permission_id
     validates_uniqueness_of :name
@@ -20,7 +19,7 @@ module Goldberg
       ObjectSpace.each_object(Class) do |klass|
         if klass.respond_to? :controller_path
           if (klass.to_s != ApplicationController.to_s and
-              klass.ancestors.map{|c|c.to_s}.include?(ApplicationController.to_s))
+                klass.ancestors.map{|c|c.to_s}.include?(ApplicationController.to_s))
             classes[klass.controller_path] = klass
           end
         end

@@ -1,6 +1,5 @@
 module Goldberg
   class MenuItem < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
     
     validates_presence_of :name, :label
@@ -18,7 +17,7 @@ module Goldberg
       end
       
       return MenuItem.find(:first,
-                           :conditions => conditions)
+        :conditions => conditions)
     end
     
     
@@ -32,19 +31,19 @@ module Goldberg
       end
       
       return MenuItem.find(:first,
-                           :conditions => conditions)
+        :conditions => conditions)
     end
 
 
     def MenuItem.repack(repack_id)
       if repack_id
         items = MenuItem.find(:all,
-                              :conditions => "parent_id = #{repack_id}",
-                              :order => 'seq')
+          :conditions => "parent_id = #{repack_id}",
+          :order => 'seq')
       else
         items = MenuItem.find(:all,
-                              :conditions => "parent_id is null",
-                              :order => 'seq')
+          :conditions => "parent_id is null",
+          :order => 'seq')
       end
 
       seq = 1
@@ -84,7 +83,7 @@ module Goldberg
       items = []
 
       menu_items = self.find(:all,
-                             :order => 'parent_id, seq, id')
+        :order => 'parent_id, seq, id')
       for item in menu_items do
         if item.controller_action_id.to_i > 0
           item.controller_action = 

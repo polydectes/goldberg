@@ -5,7 +5,7 @@ require 'goldberg/auth_controller'
 # Re-raise errors caught by the controller.
 class Goldberg::ContentPagesController; def rescue_action(e) raise e end; end
 
-class ContentPagesControllerTest < Test::Unit::TestCase
+class ContentPagesControllerTest < ActionController::TestCase
   include Goldberg::TestHelper
 
   def setup

@@ -1,9 +1,7 @@
 module Goldberg
   class Menu
-    unloadable
 
     class Node
-      unloadable
       attr_accessor :parent, :parent_id, :children
       attr_accessor :site_controller_id, :controller_action_id, :content_page_id
       attr_accessor :id, :name, :label, :url
@@ -169,7 +167,7 @@ module Goldberg
       end
     end
 
-  # Returns the name of the main menu
+    # Returns the name of the main menu
     # or nil
     def main_Menu_Name
       @vector.each { |e| 

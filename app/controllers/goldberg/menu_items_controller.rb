@@ -1,12 +1,11 @@
 module Goldberg
   class MenuItemsController < ApplicationController
-    unloadable
     include Goldberg::Controller
 
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update, 
-                                        :move_up, :move_down ], 
-    :redirect_to => { :action => :list }
+      :move_up, :move_down ],
+      :redirect_to => { :action => :list }
 
     def index
       list
@@ -42,9 +41,9 @@ module Goldberg
     def create
       # Flash an error if neither an action nor a page has been selected
       if (params[:menu_item][:controller_action_id] == nil or
-          params[:menu_item][:controller_action_id].length == 0 ) and
+            params[:menu_item][:controller_action_id].length == 0 ) and
           (params[:menu_item][:content_page_id] == nil or
-           params[:menu_item][:content_page_id].length == 0 )
+            params[:menu_item][:content_page_id].length == 0 )
         flash[:error] = "You must specify either an Action or a Page!"
         @menu_item = MenuItem.new(params[:menu_item])
         @parent_item = MenuItem.find(params[:menu_item][:parent_id])
@@ -78,9 +77,9 @@ module Goldberg
     def update
       # Flash an error if neither an action nor a page has been selected
       if (params[:menu_item][:controller_action_id] == nil or
-          params[:menu_item][:controller_action_id].length == 0 ) and
+            params[:menu_item][:controller_action_id].length == 0 ) and
           (params[:menu_item][:content_page_id] == nil or
-           params[:menu_item][:content_page_id].length == 0 )
+            params[:menu_item][:content_page_id].length == 0 )
         flash[:error] = "You must specify either an Action or a Page!"
         edit
         render :action => 'edit'
@@ -166,16 +165,16 @@ module Goldberg
     def foreign
       if self.id
         @parents = MenuItem.find(:all,
-                                 :conditions => ['id not in (?)', self.id],
-                                 :order => 'name')
+          :conditions => ['id not in (?)', self.id],
+          :order => 'name')
       else
         @parents = MenuItem.find(:all,
-                                 :order => 'name')
+          :order => 'name')
       end
       @parents.unshift MenuItem.new(:id => nil, :name => '(root)')
       @actions = ControllerAction.find(:all, :order => 'site_controller_id, name')
       @actions.unshift ControllerAction.new(:id => nil, 
-                                            :name => '(none)')
+        :name => '(none)')
 
       @pages = ContentPage.find(:all, :order => 'name')
       @pages.unshift ContentPage.new(:id => nil, :name => '(none)')

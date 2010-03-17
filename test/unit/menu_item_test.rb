@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class MenuItemTest < Test::Unit::TestCase
+class MenuItemTest < ActionController::TestCase
   include Goldberg::TestHelper
   
   def test_name_is_unique

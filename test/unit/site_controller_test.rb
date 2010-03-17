@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class SiteControllerTest < Test::Unit::TestCase
+class SiteControllerTest < ActionController::TestCase
   include Goldberg::TestHelper
 
   def setup

@@ -1,11 +1,10 @@
 module Goldberg
   class ControllerActionsController < ApplicationController
-    unloadable
     include Goldberg::Controller
     
     # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
     verify :method => :post, :only => [ :destroy, :create, :update ],
-    :redirect_to => { :action => :list }
+      :redirect_to => { :action => :list }
 
 
     def index
@@ -58,7 +57,7 @@ module Goldberg
         flash[:notice] = 'ControllerAction was successfully created.'
         Role.rebuild_cache
         redirect_to :controller => 'site_controllers', :action => 'show',
-        :id => @controller_action.site_controller_id
+          :id => @controller_action.site_controller_id
       else
         foreign
         render :action => 'new'
@@ -78,7 +77,7 @@ module Goldberg
         flash[:notice] = 'ControllerAction was successfully updated.'
         Role.rebuild_cache
         redirect_to :controller => 'site_controllers', :action => 'show',
-        :id => @controller_action.site_controller_id
+          :id => @controller_action.site_controller_id
       else
         foreign
         render :action => 'edit'
@@ -92,7 +91,7 @@ module Goldberg
       @controller_action.destroy
       Role.rebuild_cache
       redirect_to :controller => 'site_controllers', :action => 'show',
-      :id => @controller_action.site_controller_id
+        :id => @controller_action.site_controller_id
     end
 
 

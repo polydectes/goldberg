@@ -1,6 +1,5 @@
 module Goldberg
   class AuthController < ApplicationController
-    unloadable
     include Goldberg::Controller
 
     def self.set_user(session, user_id = nil)
@@ -46,7 +45,7 @@ module Goldberg
         else
           reset_session #double check there isn't a stale session
           render :action => 'login'
-       end
+        end
       else
         user = User.find_by_name(params[:login][:name])
         

@@ -1,6 +1,5 @@
 module Goldberg
   class ControllerAction < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
     
     belongs_to :site_controller, :class_name => 'Goldberg::SiteController'
@@ -76,8 +75,8 @@ module Goldberg
     def self.find_for_permission(p_ids)
       if p_ids and p_ids.length > 0
         return find(:all, 
-                    :conditions => ['permission_id in (?)', p_ids],
-                    :order => 'name')
+          :conditions => ['permission_id in (?)', p_ids],
+          :order => 'name')
       else
         return Array.new
       end

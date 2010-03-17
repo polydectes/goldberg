@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class SystemSettingsTest < Test::Unit::TestCase
+class SystemSettingsTest < ActionController::TestCase
   include Goldberg::TestHelper
 
   def test_public_role

@@ -15,8 +15,7 @@ END
 
   def dispCommentBlock
     if(@content_page.arecomments == 1) then
-      #@comments = Comment.find(:all)
-      @comments = Comment.find(:all, :conditions => ["content_page_id =? AND kind = ?", @content_page.id,"content"],:order => ["created_at desc"])  
+      @comments = Goldberg::Comment.find(:all, :conditions => ["content_page_id =? AND kind = ?", @content_page.id,"content"],:order => ["created_at desc"])
       @comment = Goldberg::Comment.new
       if Goldberg::user != nil then 
          @comment.name  = Goldberg::user.fullname 

@@ -1,6 +1,5 @@
 module Goldberg
   class Permission < ActiveRecord::Base
-    unloadable
     include Goldberg::Model
 
     has_many :content_pages, :class_name => 'Goldberg::ContentPage'
