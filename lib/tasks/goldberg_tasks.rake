@@ -35,7 +35,7 @@ namespace :goldberg do
 
   desc "Apply a site theme the new syntax is goldberg:theme[theme_name]  "
   task :theme, :theme_name, :needs => :environment do |t, args|
-    source_dir = File.join(File.dirname(__FILE__), '..', 'themes')
+    source_dir = File.join(File.dirname(__FILE__), '../..', 'themes')
     puts("Args were #{args.inspect}")
     puts("t : #{t}")
     theme = args[:theme_name] 
