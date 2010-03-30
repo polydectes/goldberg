@@ -1,4 +1,4 @@
-class FixCommentsAddTimestamps < ActiveRecord::Migration
+class AddTimestampsToRolesPermissions < ActiveRecord::Migration
   include Goldberg::Migration
   def self.up
 
