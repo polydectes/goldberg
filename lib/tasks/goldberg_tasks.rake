@@ -17,7 +17,7 @@ namespace :goldberg do
   end
 
   desc "Load standard Goldberg tables from files in :path/"
-  task :load_bootstrap_from, :path => [:migrate, :purge_data] do |t,args|
+  task :load_bootstrap_from, :path, :needs => [:migrate, :purge_data] do |t,args|
     puts("Args were #{args.inspect}")
     puts("t : #{t}")
     path = args[:path]
