@@ -52,9 +52,9 @@ END
     end  # self.included
     
 
-    def self.load_bootstrap
+    def self.load_bootstrap(path = "#{File.dirname(__FILE__)}/../../db" )
       self.goldberg_classes.each do |klass|
-        self.load_for_class klass, "#{File.dirname(__FILE__)}/../../db"
+        self.load_for_class klass, path
       end
     end
 

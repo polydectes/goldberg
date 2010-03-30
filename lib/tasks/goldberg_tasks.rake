@@ -16,6 +16,15 @@ namespace :goldberg do
     Goldberg::Migration.load_bootstrap
   end
 
+  desc "Load standard Goldberg tables from files in :path/"
+  task :load_bootstrap_from, :path => [:migrate, :purge_data] do |t,args|
+    puts("Args were #{args.inspect}")
+    puts("t : #{t}")
+    path = args[:path]
+    puts("Loading bootstrap data from #{path}")
+    Goldberg::Migration.load_bootstrap path
+  end
+
   desc "deletes all goldberg-Content"
   task :purge_data do
     Goldberg::Migration.goldberg_classes.each do |gclass|
