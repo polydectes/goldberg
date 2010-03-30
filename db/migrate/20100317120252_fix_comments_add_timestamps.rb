@@ -22,6 +22,8 @@ class FixCommentsAddTimestamps < ActiveRecord::Migration
     add_column "#{prefix}users", :created_at, :datetime
     add_column "#{prefix}users", :updated_at, :datetime
 
+    add_column "#{prefix}roles_permissions", :created_at, :datetime
+    add_column "#{prefix}roles_permissions", :updated_at, :datetime
   end
 
   def self.down
