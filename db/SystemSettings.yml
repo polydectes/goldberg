@@ -19,3 +19,4 @@
     site_name: Goldberg
     self_reg_confirmation_error_page_id: "11"
     site_subtitle: A website development tool for Ruby on Rails
+    allow_password_retrieval: "1"
