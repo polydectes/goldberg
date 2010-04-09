@@ -13,7 +13,10 @@ module Goldberg
     serialize :cache
 
     class << self
-      def Role.rebuild_cache
+      def Role.rebuild_cache(doit = false)
+
+        return unless doit
+
         roles = Role.find(:all)
         
         for role in roles do
