@@ -92,8 +92,8 @@ namespace :goldberg do
     rescue
       nil
     end
-    # conn.execute "update roles set cache = NULL"
-    Goldberg::Role.rebuild_cache
+    conn.execute "update roles set cache = NULL"
+    Goldberg::Role.rebuild_cache true
   end
 
 end
